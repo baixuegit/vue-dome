@@ -5,7 +5,6 @@
 ## Build Setup
 
 ``` bash
-vue学习案例
 # install dependencies
 npm install
 
