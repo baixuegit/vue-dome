@@ -21,7 +21,9 @@
     "file-saver": "^2.0.0",
     "mockjs": "^1.0.1-beta3",
     "nprogress": "^0.2.0",
+    "print-js": "^1.0.54",
     "vue": "^2.5.2",
+    "vue-print-nb": "^1.0.3",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "xlsx": "^0.14.1"

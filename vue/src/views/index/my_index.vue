@@ -4,9 +4,11 @@
       <el-button type="primary" @click="refresh" size="small">刷新</el-button>
       <el-button type="primary" @click="mixniClick" size="small">点击查询</el-button>
       <el-button type="primary" @click="exportExcel" size="small">导出数据</el-button>
+      <el-button type="primary" @click="printExcel" size="small">打印</el-button>
     </div>
-    <div class="tableWaper flex_div flex_auto">
-      <el-table class="flex_div flex_auto"
+    <div class="tableWaper flex_div flex_auto"  >
+      <h1>表头</h1>
+      <el-table id="printTable" ref="print" class="flex_div flex_auto"
       v-loading="loading"
       :data="tableData"
       border
@@ -25,6 +27,7 @@
           width="180">
         </el-table-column>
         <el-table-column
+        :show-overflow-tooltip="true"
           align="center"
           prop="address"
           label="地址">
@@ -35,8 +38,10 @@
 </template>
 <script>
 // import mixin from '@/assets/mixins/mixin.js'
+
 import FileSaver from 'file-saver'
 import XLSX from 'xlsx'
+
 export default {
   // mixins: [mixin],
   inject: ['reload'], // 引入方法
@@ -53,11 +58,13 @@ export default {
   },
   mounted () {},
   methods: {
+    // 获取列表数据
     async mixniClick () {
       // console.log(this.name2)点击按钮的时候获取，mixins混入的数据
       let res = await this.$http.post(`/getTableList`)
       this.tableData = res.list
     },
+    // 导出excel
     exportExcel () {
       console.log('导出数据')
       var wb = XLSX.utils.table_to_book(document.querySelector('.el-table'))
@@ -67,9 +74,14 @@ export default {
       } catch (e) { if (typeof console !== 'undefined') console.log(e, wbout) }
       return wbout
     },
+    // 刷新
     refresh () {
       this.reload() // 调用方法
       // console.log('刷新')
+    },
+    // 打印
+    printExcel () {
+      this.$print(this.$refs.print)
     }
   }
 }
@@ -78,8 +90,8 @@ export default {
 .domeWapper {
   flex-direction:column ;
   /* height: 50%; */
-  /* width: 100%; */
-  /* min-width: 600px; */
+  width: 80%;
+  /* width: 800px; */
   padding:0 40px 40px 40px;
   display: flex;
   flex-direction: column;
@@ -123,7 +135,7 @@ export default {
 }
 
 /* 修改滚动条的样式 */
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   background: rgba(0, 0, 0, 0);
   width: 7px;
   height: 7px;
@@ -131,6 +143,6 @@ export default {
 ::-webkit-scrollbar-thumb {
   background: rgba(37, 36, 36, 0.27);
   border-radius: 10px;
-} */
+}
 
 </style>

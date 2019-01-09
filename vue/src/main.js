@@ -14,7 +14,7 @@ import '@/assets/css/global.scss'
 
 import libs from './libs'
 import Element from 'element-ui'
-
+import print from '@/libs/utils/print' // 打印
 // import {
 //   Button,
 //   Input,
@@ -26,6 +26,7 @@ import Element from 'element-ui'
 // Vue.use(Select)
 
 Vue.use(Element)
+Vue.use(print)
 
 Vue.use(libs)
 
