@@ -42,12 +42,12 @@
 
 import FileSaver from 'file-saver'
 import XLSX from 'xlsx'
-import html2Canvas from 'html2canvas'
-import JsPDF from 'jspdf'
-import qs from 'qs'// 需要转换 用JOSN.stringify()不行
+// import html2Canvas from 'html2canvas'
+// import JsPDF from 'jspdf'
+// import qs from 'qs'// 需要转换 用JOSN.stringify()不行
 export default {
   // mixins: [mixin],
-  inject: ['reload'], // 引入方法
+  inject: ['reload'], // 引入方法 刷新
   data () {
     return {
       loading: false,
@@ -101,8 +101,9 @@ export default {
   .el-table{
     /* width: 600px; */
     /* height: 400px; */
-    border-bottom: 0 none;
-    border-left: 0 none;
+    border:1px solid #ccc;
+    /* border-bottom: 0 none;
+    border-left: 0 none; */
 
   }
   .el-table tr{
