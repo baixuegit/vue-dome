@@ -33,6 +33,8 @@ Vue.use(libs)
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
+  // 设置每个页面的title
+  document.title = to.meta.title
   NProgress.start()
   next()
 })

@@ -1,15 +1,15 @@
 <template>
   <div class="domeWapper flex_div flex_auto">
     <div class="btnWapper">
-      <el-button type="primary" @click="refresh" size="small" class="noprint">刷新</el-button>
+      <el-button type="primary" @click="refresh" size="small">刷新</el-button>
       <el-button type="primary" @click="mixniClick" size="small">点击查询</el-button>
       <el-button type="primary" @click="exportExcel" size="small">导出数据</el-button>
       <el-button type="primary" @click="printExcel" size="small">打印1</el-button>
       <el-button type="primary" @click="printExcel2" size="small">打印2</el-button>
     </div>
-    <div class="tableWaper flex_div flex_auto noprint" >
-      <h1 ref="print" class="noprint">表头</h1>
-      <el-table id="printTable" ref="print" class="flex_div flex_auto noprint"
+    <div class="tableWaper flex_div flex_auto" >
+      <h1 ref="print">表头</h1>
+      <el-table ref="print" class="flex_div flex_auto"
       v-loading="loading"
       :data="tableData"
       border
@@ -94,7 +94,9 @@ export default {
 </script>
 <style type="text/css" media="print">
 @media print{
-
+  *{
+    border: 0;
+  }
   .noprint{
     display: none;
     }
@@ -102,8 +104,8 @@ export default {
     /* width: 600px; */
     /* height: 400px; */
     border:1px solid #ccc;
-    /* border-bottom: 0 none;
-    border-left: 0 none; */
+    /* border-bottom: 0 none; */
+    /* border-left: 0 none; */
 
   }
   .el-table tr{
